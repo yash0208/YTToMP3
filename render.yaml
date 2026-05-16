@@ -1,12 +1,9 @@
 services:
   - type: web
     name: yt-to-mp3
-    env: python
+    env: docker
     plan: free
-    buildCommand: apt-get update && apt-get install -y ffmpeg && pip3 install -r requirements.txt
-    startCommand: streamlit run app.py --server.port $PORT --server.address 0.0.0.0
+    dockerfilePath: ./Dockerfile
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.11.9
       - key: STREAMLIT_SERVER_HEADLESS
         value: "true"
